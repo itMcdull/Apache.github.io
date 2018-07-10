@@ -4,6 +4,11 @@ let http = require('http');
 let path = require('path');
 //引入文件模版
 let fs =require('fs');
+//引入require mime 第三方模版
+let mime = require('mime');
+//引入queryshring 模块
+const querystring = require('querystring');
+
 //配置网站根目录
 let rootPath = path.join(__dirname,"www");
     // console.log(rootPath);
@@ -30,8 +35,18 @@ http.createServer((request,Response)=>{
                 //能够进到这里就说明 是文件
                 // 然后读取文件,返回文件
                 fs.readFile(filePath,(err,data)=>{
-                    // 响应内容
-                    Response.end(data);  
+                    if (err) {
+                        console.log(err);
+                    }else{
+                    //直接返回
+                    // console.log(mime.getType(filePath));
+                    
+                    Response.writeHead(200,{
+                      "content-type":mime.getType(filePath)  
+                    })
+                        // 响应内容
+                        Response.end(data);  
+                    }
                 })              
             } 
             //如果是文件夹

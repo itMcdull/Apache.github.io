@@ -17,7 +17,9 @@ let rootPath = path.join(__dirname,"www");
 http.createServer((request,Response)=>{
     // console.log("请求来了");
     //根据请求的url 生成静态资源服务器中的绝对路径
-    let filePath = path.join(rootPath,request.url);
+    let filePath = path.join(rootPath, querystring.unescape(request.url));
+    // let filePath = path.join(rootPath,request.url);
+    console.log(filePath);
     // console.log(filePath);
     //判断访问的这个目录是否存在
     let isExist = fs.existsSync(filePath);

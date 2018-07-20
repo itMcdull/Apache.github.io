@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		
+		.box {
+			display: flex;
+			align-items: center;
+			width: 210px;
+			height: 210px;
+			position: absolute;
+			top: 220px;
+			left: 220px;
+			border: 1px #ccc solid;
+			border-radius: 50%;
+			background: linear-gradient(#fff 50%,#000 50%);
+		}
+		.left , .right {
+			width: 30px;
+			height: 30px;
+			border-radius: 50%;
+		}
+		.left{
+			background-color: #000;
+			border: 37.5px solid #fff;
+			animation: change1 1s  linear infinite alternate;
+			transform-origin: 0% 50%;
+		}
+		.right {
+			border: 37.5px solid #000;
+			background-color: #fff;
+			animation: change 1s  linear infinite alternate;
+			transform-origin: 100% 50%;
+		}
+		@keyframes change {
+				from { 
+					transform: scale(0.5);
+				 }
+				to { 
+					transform: scale(1.5);
+				 }
+			}
+				@keyframes change1 {
+				from { 
+					transform: scale(1.5);
+				 }
+				to { 
+					transform: scale(0.5);
+				 }
+			}
+	   	.bg {
+			position: relative;
+			background: url('./timg.jpg');
+			width: 650px;
+			height: 650px;
+			margin: 100px auto;
+			
+	   	}
+
+	</style>
+</head>
+<body>
+	<div class="bg">
+		<div class="box">
+			<div class="left"></div>
+			<div class="right"></div>
+		</div>
+	</div>
+</body>
+</html>
